@@ -1,38 +1,48 @@
 import Commodity
 import Indicator
+import Measurement
 from CommodityGroup import CommodityGroup
 from IndicatorGroup import IndicatorGroup
 import Unit
 
 class FoodCropFactory:
 
+    unit : Unit
+    commodity : Commodity
+    indicator : Indicator
+    measurement : Measurement
+
     def __init__(self):
-        pass
+        self.Unit = Unit
+        self.Commidity = Commodity
+        self.Indicator = Indicator
+        self.Measurement = Measurement
+
 
 
     def createVolume(self, id):
-        pass
+        self.Unit.Volume(id, "Volume")
 
     def createPrice(self, id):
-        pass
+        self.Unit.Price(id, "Price")
 
     def createWeight(self, id, weight):
-        pass
+        self.Unit.Weight(id, "Weight")
 
     def createSurface(self, id):
-        pass
+        self.Unit.Surface(id, "Surface")
 
     def createCount(self, id, what):
-        pass
+        self.Unit.Count(id, "Count", what)
 
     def createRatio(self, id):
-        pass
+        self.Unit.Ratio(id, "Ratio")
 
     def createCommodity(self, group : CommodityGroup, id, name):
-        pass
+        Commodity(group, id, name)
 
     def createIndicator(self, id, frequency, freqDesc, geogLocation, indicatorGroup: IndicatorGroup):
-        pass
+        Indicator(id, frequency, freqDesc, geogLocation, indicatorGroup, self.Unit)
 
     def createMeasurement(self, id, year, value, timeperiodId, timeperiodDesc, commodity: Commodity, indicator: Indicator):
-        pass
+        Measurement(id, year, value, timeperiodId, timeperiodDesc, commodity, indicator)

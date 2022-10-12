@@ -39,8 +39,8 @@ class Price(Unit):
 
 class Count(Unit):
 
-    def _init_(id, name):
-        Unit(id, "Count")
+    def _init_(id, name,what):
+        Unit(id, "Count", what)
 
 class Surface(Unit):
 
