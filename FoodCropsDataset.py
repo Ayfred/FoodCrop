@@ -13,7 +13,7 @@ class FoodCropsDataset:
         self.factory
 
 
-    def load(self, datasetPath : str):
+    def load(self, datasetPath):
         dataframe = pandas.read_csv(datasetPath) #"D:\maxim\Documents\Python\FeedGrains.csv"
         return dataframe
 
