@@ -38,7 +38,6 @@ class Price(Unit):
         Unit(id, "Price")
 
 class Count(Unit):
-
     def _init_(id, name,what):
         Unit(id, "Count", what)
 

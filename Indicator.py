@@ -1,13 +1,15 @@
+import Unit
 from IndicatorGroup import IndicatorGroup
 
 
 class Indicator:
 
-    id : str
-    frequency : int
-    frequencyDesc : str
-    geogLocation: str
 
     def __init__(self, id: int, frequency: int, freqDesc: str, geogLocation: str, indicatorGroup: IndicatorGroup, unit: Unit):
-        pass
+        self.id = id
+        self.frequency = frequency
+        self.freqDesc = freqDesc
+        self.geoLocation = geogLocation
+        self.indicatorGroup = indicatorGroup
+        self.unit = unit
 
