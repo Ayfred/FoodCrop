@@ -15,7 +15,12 @@ class FoodCropsDataset:
 
     def load(self, datasetPath):
         dataframe = pandas.read_csv(datasetPath) #"D:\maxim\Documents\Python\FeedGrains.csv"
-        return dataframe
+
+        for index, row in dataframe.iterrows():
+            column_value = row['R']
+
+
+
 
 
     def findMeasurements(self, commodityType, IndicatorGroup, geographicalLocation, unit):
