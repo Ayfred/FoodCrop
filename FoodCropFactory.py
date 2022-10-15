@@ -1,43 +1,44 @@
-import Commodity
-import Indicator
-import Measurement
+from Commodity import Commodity
+from Indicator import Indicator
+from Measurement import Measurement
 from CommodityGroup import CommodityGroup
 from IndicatorGroup import IndicatorGroup
-import Unit
+from Unit import Volume, Price, Weight, Surface, Count, Ratio
+
 
 class FoodCropFactory:
-    def __init__(self):
-        self.Unit = Unit
-        self.Commidity = Commodity
-        self.Indicator = Indicator
+    def __init__(self): pass
 
     def createVolume(self, id):
-        return self.Unit.Volume(id, "Volume")
+        return Volume(id, "Volume")
 
     def createPrice(self, id):
-        return self.Unit.Price(id, "Price")
+        return Price(id, "Price")
 
     def createWeight(self, id, weight):
-        return self.Unit.Weight(id, "Weight")
+        w = Weight(id, "Weight")
+        w.multiplier = weight
+        return w
 
     def createSurface(self, id):
-        return self.Unit.Surface(id, "Surface")
+        return Surface(id, "Surface")
 
     def createCount(self, id, what):
-        #return self.Unit.Count(id, "Count", what)
-        pass
+        c = Count(id, "Count")
+        c.what = what
+        return c
 
     def createRatio(self, id):
-        return self.Unit.Ratio(id, "Ratio")
+        return Ratio(id, "Ratio")
 
     def createCommodity(group : CommodityGroup, id, name):
-        return Commodity.Commodity(group, id, name)
+        return Commodity(id, name)
 
-    def createIndicator(self, id, frequency, freqDesc, geogLocation, indicatorGroup: IndicatorGroup):
-        return Indicator.Indicator(id, frequency, freqDesc, geogLocation, indicatorGroup, self.Unit)
+    def createIndicator(self, id, frequency, freqDesc, geogLocation, IndicatorGroup):
+        return Indicator(id, frequency, freqDesc, geogLocation, IndicatorGroup)
 
-    def createMeasurement(self, id, year, value, timeperiodId, timeperiodDesc, commodity: Commodity, indicator: Indicator):
-        return Measurement.Measurement(id, year, value, timeperiodId, timeperiodDesc, commodity, indicator)
+    def createMeasurement(self, id, year, value, timeperiodId, timeperiodDesc, commodity, indicator):
+        return Measurement(id, year, value, timeperiodId, timeperiodDesc, commodity, indicator)
 
 
 

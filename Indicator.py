@@ -1,15 +1,14 @@
-import Unit
+from enum import Enum
+from  Unit import Unit
 from IndicatorGroup import IndicatorGroup
 
 
 class Indicator:
-
-
-    def __init__(self, id: int, frequency: int, freqDesc: str, geogLocation: str, indicatorGroup: IndicatorGroup, unit: Unit):
+    def __init__(self, id, frequency, freqDesc, geogLocation, IndicatorGroup):
         self.id = id
         self.__frequency = frequency
         self.__freqDesc = freqDesc
         self.__geoLocation = geogLocation
-        self.indicatorGroup = indicatorGroup
-        self.unit = unit
+        self.indicatorGroup = IndicatorGroup
+        self.unit = Unit
 

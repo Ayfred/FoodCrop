@@ -7,34 +7,30 @@ class Unit(ABC):
         self.name = name
 
 
-
 class Volume(Unit):
-
     def _init_(self, id, name):
-        super().__init__(id, "Volume")
+        super().__init__(id, name)
+
 
 class Weight(Unit):
 
     def _init_(self, id, name, multiplier):
-        super().__init__(id, "Weight")
+        super().__init__(id, name)
         self.multiplier = multiplier
 
 class Ratio(Unit):
-
-    def _init_(self, id, name):
+    def _init_(self, id):
         super().__init__(id, "Ratio")
 
 class Price(Unit):
-
-    def _init_(self, id, name):
+    def _init_(self, id):
         super().__init__(id, "Price")
 
 class Count(Unit):
-    def _init_(self, id, name,what):
+    def _init_(self, id, what):
         super().__init__(id, "Count")
         self.what = what
 
 class Surface(Unit):
-
     def _init_(self, id, name):
         super().__init__(id, "Surface")
