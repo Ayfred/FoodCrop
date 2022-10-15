@@ -30,7 +30,7 @@ class FoodCropFactory:
     def createRatio(self, id):
         return self.Unit.Ratio(id, "Ratio")
 
-    def createCommodity(self, group : CommodityGroup, id, name):
+    def createCommodity(group : CommodityGroup, id, name):
         return Commodity.Commodity(group, id, name)
 
     def createIndicator(self, id, frequency, freqDesc, geogLocation, indicatorGroup: IndicatorGroup):

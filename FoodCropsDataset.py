@@ -1,13 +1,13 @@
 import pandas
+
 import FoodCropFactory
 import IndicatorGroup
-import Measurement
 from CommodityGroup import CommodityGroup
-from Unit import Unit
 
 
 class FoodCropsDataset:
-    def __init__(self):
+
+    def __init__(self, CommodityGroup, FoodCropFactory):
         self.CommodityGroup = CommodityGroup
         self.foodcropfactory = FoodCropFactory
         self.commodityType = {}
@@ -21,8 +21,9 @@ class FoodCropsDataset:
         dataframe = pandas.read_csv(datasetPath) #"D:\maxim\Documents\Python\FeedGrains.csv"
 
         for index, row in dataframe.iterrows():
-            print(index, row)
-            commodity = self.foodcropfactory.FoodCropFactory.createCommodity(self.foodcropfactory, self.CommodityGroup, index, str(row[8]))
+            #print(index, row)
+            commodity = self.foodcropfactory.FoodCropFactory.createCommodity(self.CommodityGroup, index, str(row[8]))
+            print(commodity)
             indicator = self.foodcropfactory.FoodCropFactory.createIndicator(self.IndicatorGroup, index, row[14], row[15], row[6], IndicatorGroup)
             measurement = self.foodcropfactory.FoodCropFactory.createMeasurement(index, row[13], row[16], row[17], commodity, indicator)
             self.Tableau.append(measurement)
@@ -34,6 +35,9 @@ class FoodCropsDataset:
         geographicalLocation = None
         pass
 
-test = FoodCropsDataset()
+
+fcf = FoodCropFactory()
+cg = CommodityGroup()
+test = FoodCropsDataset(cg, fcf)
 
 
