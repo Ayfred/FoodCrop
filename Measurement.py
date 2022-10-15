@@ -1,8 +1,9 @@
 from Commodity import Commodity
+from Describable import Describable
 from Indicator import Indicator
 
 
-class Measurement:
+class Measurement(Describable):
     year = int
     value = float
     timeperiodId = int

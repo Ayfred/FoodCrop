@@ -1,8 +1,7 @@
 from Commodity import Commodity
+from CommodityGroup import CommodityGroup
 from Indicator import Indicator
 from Measurement import Measurement
-from CommodityGroup import CommodityGroup
-from IndicatorGroup import IndicatorGroup
 from Unit import Volume, Price, Weight, Surface, Count, Ratio
 
 
