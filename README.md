@@ -20,5 +20,7 @@ Version 0.4
 Changelog :
 - Création de toutes les classes à partir du diagramme des classes
 
+--------------------------------------------------------------------------------------------------------------------------------
+
 
 Créé et Développé par Ayfred & Yunus & Smilaid
