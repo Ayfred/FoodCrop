@@ -1,5 +1,13 @@
 Projet python : FoodCrop, gestion de données à partir d'un tableau csv
 
+Version 0.7.1
+
+Changelog :
+- implémentation de Describable (1/?)
+- Réglage de bug
+
+--------------------------------------------------------------------------------------------------------------------------------
+
 Version 0.7
 
 Changelog :
