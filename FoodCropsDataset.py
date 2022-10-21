@@ -19,7 +19,7 @@ class FoodCropsDataset:
         self.load("FeedGrains.csv")
 
     def load(self, datasetPath):
-        dataframe = pandas.read_csv(datasetPath) #"D:\maxim\Documents\Python\FeedGrains.csv"
+        dataframe = pandas.read_csv(datasetPath)
         i = 0
         for index, row in dataframe.iterrows():
             commodity = self.fcf.createCommodity(index, self.commodityType,str(row[8]))
