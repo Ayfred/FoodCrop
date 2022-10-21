@@ -27,7 +27,7 @@ class FoodCropsDataset:
             measurement = self.fcf.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
             self.Tableau.append(measurement)
             i += 1
-            if i == 5: break
+            if i == 15: break
         print(self.commodityType)
         print(self.indicatorGroup)
         print(self.Tableau)
