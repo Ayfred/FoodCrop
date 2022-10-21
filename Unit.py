@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from Describable import Describable
 
 
-class Unit(ABC, Describable):
+class Unit(Describable, ABC):
 
     def __init__(self, id, name):
         self.id = id

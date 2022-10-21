@@ -6,6 +6,9 @@ from IndicatorGroup import IndicatorGroup
 
 
 class Indicator(Describable):
+    def describe(self):
+        pass
+
     def __init__(self, id, frequency, freqDesc, geogLocation, IndicatorGroup):
         self.id = id
         self.__frequency = frequency
