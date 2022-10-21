@@ -21,5 +21,6 @@ class Measurement(Describable):
         self.commidity = Commodity
         self.indicator = Indicator
 
-
+    def describe(self):
+        return
 

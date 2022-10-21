@@ -29,7 +29,7 @@ class FoodCropFactory:
     def createRatio(self, id):
         return Ratio(id, "Ratio")
 
-    def createCommodity( self, id, dico, name):
+    def createCommodity(self, id, dico, name):
         if id in dico:
             return dico[str(id)]
         dico[str(id)] = Commodity(id, name)

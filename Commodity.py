@@ -12,5 +12,5 @@ class Commodity(Describable):
         self.group = CommodityGroup
         self.__name = name
 
-
-
+    def describe(self):
+        pass

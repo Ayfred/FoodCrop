@@ -17,3 +17,5 @@ class Indicator(Describable):
         self.indicatorGroup = IndicatorGroup
         self.unit = Unit
 
+    def describe(self):
+        return self.id, self.__freqDesc

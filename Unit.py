@@ -9,14 +9,14 @@ class Unit(Describable, ABC):
         self.name = name
 
     def describe(self):
-        pass
+        return self.id, self.name
 
 class Volume(Unit):
     def _init_(self, id, name):
         super().__init__(id, name)
 
     def describe(self):
-        pass
+        return self.id, self.name
 
 class Weight(Unit):
 
@@ -25,21 +25,21 @@ class Weight(Unit):
         self.multiplier = multiplier
 
     def describe(self):
-        pass
+        return self.id, self.name, self.multiplier
 
 class Ratio(Unit):
     def _init_(self, id):
         super().__init__(id, "Ratio")
 
     def describe(self):
-        print(self.name + self.id)
+        return self.name + self.id
 
 class Price(Unit):
     def _init_(self, id):
         super().__init__(id, "Price")
 
     def describe(self):
-        pass
+        return self.id, self.name
 
 class Count(Unit):
     def _init_(self, id, what):
@@ -47,11 +47,11 @@ class Count(Unit):
         self.what = what
 
     def describe(self):
-        pass
+        return self.id, self.name, self.what
 
 class Surface(Unit):
     def _init_(self, id, name):
         super().__init__(id, "Surface")
 
     def describe(self):
-        pass
+        return self.id, self.name
