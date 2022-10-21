@@ -32,13 +32,14 @@ class FoodCropFactory:
     def createCommodity( self, id, dico, name):
         if id in dico:
             return dico[id]
-
         dico[str(id)] = Commodity(id, name)
-        print(dico[str(id)])
         return dico[str(id)]
 
-    def createIndicator(self, id, frequency, freqDesc, geogLocation, IndicatorGroup):
-        return Indicator(id, frequency, freqDesc, geogLocation, IndicatorGroup)
+    def createIndicator(self, id, frequency, freqDesc, geogLocation, indicatorGroup, dico):
+        if id in dico:
+            return dico[id]
+        dico[str(id)] = Indicator(id, frequency, freqDesc, geogLocation, indicatorGroup)
+        return Indicator(id, frequency, freqDesc, geogLocation, indicatorGroup)
 
     def createMeasurement(self, id, year, value, timeperiodId, timeperiodDesc, commodity, indicator):
         return Measurement(id, year, value, timeperiodId, timeperiodDesc, commodity, indicator)

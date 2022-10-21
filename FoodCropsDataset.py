@@ -23,7 +23,7 @@ class FoodCropsDataset:
         i = 0
         for index, row in dataframe.iterrows():
             commodity = self.fcf.createCommodity(index, self.commodityType,str(row[8]))
-            indicator = self.fcf.createIndicator(index, row[14], row[15], row[6], IndicatorGroup)
+            indicator = self.fcf.createIndicator(index, row[14], row[15], row[6], IndicatorGroup,self.indicatorGroup)
             measurement = self.fcf.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
             self.Tableau.append(measurement)
             i += 1
