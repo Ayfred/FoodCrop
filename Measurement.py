@@ -4,6 +4,9 @@ from Indicator import Indicator
 
 
 class Measurement(Describable):
+    def describe(self):
+        pass
+
     year = int
     value = float
     timeperiodId = int
