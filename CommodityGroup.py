@@ -1,5 +1,5 @@
 from enum import Enum
-
+## Idem, à quoi ça sert ?
 class CommodityGroup(Enum):
         CORN = 1
         BARLEY = 2
