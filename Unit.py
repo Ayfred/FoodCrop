@@ -12,37 +12,37 @@ class Unit(Describable, ABC):
         return self.id, self.name
 
 class Volume(Unit):
-    def __init__(self, id):
+    def _init_(self, id, name):
         super().__init__(id, name)
 
     def describe(self):
         return self.id, self.name
 
 class Weight(Unit):
-
-    def __init__(self, id, multiplier):
-        super().__init__(id, "Weight")
+## En plus des autres constructeurs, on instancie dans celui-là un multiplicateur
+    def _init_(self, id, name, multiplier):
+        super().__init__(id, name)
         self.multiplier = multiplier
 
     def describe(self):
         return self.id, self.name, self.multiplier
 
 class Ratio(Unit):
-    def __init__(self, id):
+    def _init_(self, id):
         super().__init__(id, "Ratio")
 
     def describe(self):
         return self.name + self.id
 
 class Price(Unit):
-    def __init__(self, id):
+    def _init_(self, id):
         super().__init__(id, "Price")
 
     def describe(self):
         return self.id, self.name
 
 class Count(Unit):
-    def __init__(self, id, what):
+    def _init_(self, id, what):
         super().__init__(id, "Count")
         self.what = what
 
@@ -50,7 +50,7 @@ class Count(Unit):
         return self.id, self.name, self.what
 
 class Surface(Unit):
-    def __init__(self, id):
+    def _init_(self, id, name):
         super().__init__(id, "Surface")
 
     def describe(self):

@@ -7,10 +7,11 @@ from Unit import Volume, Price, Weight, Surface, Count, Ratio
 
 class FoodCropFactory:
 
-    def __init__(self):
-        self.commodityDico = {}
-        self.indicatorDico = {}
-        self.unitDico = {}
+    def __int__(self):
+        
+        self.commodityDico
+        self.indicatorDico
+        self.unitDico
 
     def createVolume(self, id):
         if id in self.unitDico:
@@ -54,12 +55,17 @@ class FoodCropFactory:
         self.commodityDico[str(id)] = Commodity(id, name)
         return self.commodityDico[str(id)]
 
+
+##Création d'un indicateur prenant en argument un identifiant, une fréquence, une description de fréquence une localisation GPS, etc.
+    ##On fait appel au dictionnaire Indicator. Si un id se trouve dans le dico, la méthode renvoie le Indicator en string
     def createIndicator(self, id, frequency, freqDesc, geogLocation, indicatorGroup):
         if id in self.indicatorDico:
             return self.indicatorDico[str(id)]
         self.indicatorDico[str(id)] = Indicator(id, frequency, freqDesc, geogLocation, indicatorGroup)
         return self.indicatorDico[str(id)]
 
+## Création de mesures
+    ## La méthode retourne un tuple contenant un id, une valeur, une période de temps, sa description, le produit sur lequel s'applique la mesure et un indicateur choisi pour la mesure.
     def createMeasurement(self, id, year, value, timeperiodId, timeperiodDesc, commodity, indicator):
         return Measurement(id, year, value, timeperiodId, timeperiodDesc, commodity, indicator)
 
