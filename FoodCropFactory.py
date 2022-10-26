@@ -6,49 +6,35 @@ from Unit import Volume, Price, Weight, Surface, Count, Ratio
 
 
 class FoodCropFactory:
+    def __init__(self) -> None:
+        super().__init__()
+        self.commodityDico = {}
+        self.indicatorDico = {}
+        self.unitDico = {}
 
-    def __int__(self):
-        
-        self.commodityDico
-        self.indicatorDico
-        self.unitDico
-
+    ## Création de volume
     def createVolume(self, id):
-        if id in self.unitDico:
-            return self.unitDico[str(id)]
-        self.unitDico[str(id)] = Volume(id)
-        return self.unitDico[str(id)]
-
+        return Volume(id, "Volume")
+## Création des prix
     def createPrice(self, id):
-        if id in self.unitDico:
-            return self.unitDico[str(id)]
-        self.unitDico[str(id)] = Price(id)
-        return self.unitDico[str(id)]
-
+        return Price(id, "Price")
+## Création des poids
     def createWeight(self, id, weight):
-        if id in self.unitDico:
-            return self.unitDico[str(id)]
-        self.unitDico[str(id)] = Weight(id, weight)
-        return self.unitDico[str(id)]
-
+        w = Weight(id, "Weight")
+        w.multiplier = weight
+        return w
+##Création de surfaces
     def createSurface(self, id):
-        if id in self.unitDico:
-            return self.unitDico[str(id)]
-        self.unitDico[str(id)] = Surface(id)
-        return self.unitDico[str(id)]
-
+        return Surface(id, "Surface")
+    ##Création d'un paramètre de comptage
     def createCount(self, id, what):
-        if id in self.unitDico:
-            return self.unitDico[str(id)]
-        self.unitDico[str(id)] = Count(id, what)
-        return self.unitDico[str(id)]
-
+        c = Count(id, "Count")
+        c.what = what
+        return c
+##Création d'un paramètre de ratio
     def createRatio(self, id):
-        if id in self.unitDico:
-            return self.unitDico[str(id)]
-        self.unitDico[str(id)] = Ratio(id)
-        return self.unitDico[str(id)]
-
+        return Ratio(id, "Ratio")
+## On va collecter les produits grâce à leurs identifiants : si les id sont dans le dictionnaire alors on retourne la donnée en String
     def createCommodity(self, id, name):
         if id in self.commodityDico:
             return self.commodityDico[str(id)]
@@ -68,6 +54,3 @@ class FoodCropFactory:
     ## La méthode retourne un tuple contenant un id, une valeur, une période de temps, sa description, le produit sur lequel s'applique la mesure et un indicateur choisi pour la mesure.
     def createMeasurement(self, id, year, value, timeperiodId, timeperiodDesc, commodity, indicator):
         return Measurement(id, year, value, timeperiodId, timeperiodDesc, commodity, indicator)
-
-
-
