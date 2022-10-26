@@ -6,12 +6,13 @@ from Unit import Volume, Price, Weight, Surface, Count, Ratio
 
 
 class FoodCropFactory:
-    ##Instanciations
-    def __int__(self):
-        self.commodityDico
-        self.indicatorDico
-        self.unitDico
-## Création de volume
+    def __init__(self) -> None:
+        super().__init__()
+        self.commodityDico = {}
+        self.indicatorDico = {}
+        self.unitDico = {}
+
+    ## Création de volume
     def createVolume(self, id):
         return Volume(id, "Volume")
 ## Création des prix
@@ -53,3 +54,6 @@ class FoodCropFactory:
     ## La méthode retourne un tuple contenant un id, une valeur, une période de temps, sa description, le produit sur lequel s'applique la mesure et un indicateur choisi pour la mesure.
     def createMeasurement(self, id, year, value, timeperiodId, timeperiodDesc, commodity, indicator):
         return Measurement(id, year, value, timeperiodId, timeperiodDesc, commodity, indicator)
+
+
+
