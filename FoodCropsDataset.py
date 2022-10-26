@@ -28,7 +28,8 @@ class FoodCropsDataset:
         for index, row in tqdm.tqdm(dataframe.iterrows()):
             commodity = self.fcf.createCommodity(str(row[7]), str(row[8]))
             ## On additionne les chaînes de caractères des colonnes 4 et 14 afin de constituer une clé primaire pour les indicateurs
-            indicator = self.fcf.createIndicator(str(row[4])+str(row[14]), row[14], row[15], row[6], IndicatorGroup)
+            unit = self.fcf.creunitDico[row[12]]
+            indicator = self.fcf.createIndicator(row[11], row[14], row[15], row[6], IndicatorGroup, unit)
             measurement = self.fcf.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
             self.Tableau.append(measurement)
             self.indicatorGroup[indicator.id] = measurement

@@ -44,10 +44,11 @@ class FoodCropFactory:
 
 ##Création d'un indicateur prenant en argument un identifiant, une fréquence, une description de fréquence une localisation GPS, etc.
     ##On fait appel au dictionnaire Indicator. Si un id se trouve dans le dico, la méthode renvoie le Indicator en string
-    def createIndicator(self, id, frequency, freqDesc, geogLocation, indicatorGroup):
+    def createIndicator(self, id, frequency, freqDesc, geogLocation, indicatorGroup, unit):
+        identifiant = str(id)
         if id in self.indicatorDico:
             return self.indicatorDico[str(id)]
-        self.indicatorDico[str(id)] = Indicator(id, frequency, freqDesc, geogLocation, indicatorGroup)
+        self.indicatorDico[str(id)] = Indicator(id, frequency, freqDesc, geogLocation, indicatorGroup, unit)
         return self.indicatorDico[str(id)]
 
 ## Création de mesures

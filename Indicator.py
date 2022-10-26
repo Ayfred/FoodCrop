@@ -8,13 +8,13 @@ from IndicatorGroup import IndicatorGroup
 class Indicator(Describable):
 
 
-    def __init__(self, id, frequency, freqDesc, geogLocation, IndicatorGroup):
+    def __init__(self, id, frequency, freqDesc, geogLocation, indicatorGroup, Unit unit):
         self.id = id
         self.__frequency = frequency
         self.__freqDesc = freqDesc
         self.__geoLocation = geogLocation
-        self.indicatorGroup = IndicatorGroup
-        self.unit = Unit
+        self.indicatorGroup = indicatorGroup
+        self.unit = unit
 
     def describe(self):
         return self.id, self.__freqDesc
