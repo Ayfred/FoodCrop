@@ -4,6 +4,7 @@ import pandas
 import tqdm as tqdm
 
 from Commodity import Commodity
+from CommodityGroup import CommodityGroup
 from FoodCropFactory import FoodCropFactory
 from IndicatorGroup import IndicatorGroup
 
@@ -27,10 +28,10 @@ class FoodCropsDataset:
         dataframe = pandas.read_csv(datasetPath)
         i = 0
         for index, row in tqdm.tqdm(dataframe.iterrows()):
-            commodity = self.fcf.createCommodity(str(row[7]), str(row[8]))
+            commodity = self.fcf.createCommodity(CommodityGroup(row[2]), str(row[7]), str(row[8]))
             ## On additionne les chaînes de caractères des colonnes 4 et 14 afin de constituer une clé primaire pour les indicateurs
             unit = self.fcf.createUnit(row[11], row[12])
-            indicator = self.fcf.createIndicator(row[0], row[14], row[15], row[6], IndicatorGroup, unit)
+            indicator = self.fcf.createIndicator(row[0], row[14], row[15], row[6], IndicatorGroup(row[0]), unit)
             measurement = self.fcf.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
             self.Tableau.append(measurement)
             self.addDict(self.indicatorGroup, indicator.id, measurement)
