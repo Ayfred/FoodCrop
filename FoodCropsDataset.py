@@ -54,11 +54,8 @@ class FoodCropsDataset:
             dict[id] = [measure]
 
 ## En cours de construction
-    def findMeasurements(self, commodityType, IndicatorGroup, geographicalLocation, unit):
-        commodityType = None
-        IndicatorGroup  = None
-        geographicalLocation = None
-        pass
+    def findMeasurements(self, commodityType = None, IndicatorGroup = None, geographicalLocation = None, unit = None):
+
 
 
 
