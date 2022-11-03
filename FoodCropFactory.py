@@ -74,3 +74,12 @@ class FoodCropFactory:
     ## La méthode retourne un tuple contenant un id, une valeur, une période de temps, sa description, le produit sur lequel s'applique la mesure et un indicateur choisi pour la mesure.
     def createMeasurement(self, id, year, value, timeperiodId, timeperiodDesc, commodity, indicator):
         return Measurement(id, year, value, timeperiodId, timeperiodDesc, commodity, indicator)
+
+    def createUnit(self,id, weight, what):
+        match id:
+            case "4", "5", "6", "12", "13", "14", "31", "45": return self.createRatio(id)
+            case "7", "8", "9", "16", "41": return self.createWeight(id, weight)
+            case "1", "3", "17", "18":return  self.createVolume(id)
+            case "2", "11", "44": return self.createSurface(id)
+            case "15": return self.createPrice(id)
+            case "46": return self.createCount(id, what)

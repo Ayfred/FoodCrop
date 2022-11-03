@@ -28,7 +28,8 @@ class FoodCropsDataset:
 
             commodity = self.fcf.createCommodity(str(row[7]), str(row[8]))
             ## On additionne les chaînes de caractères des colonnes 4 et 14 afin de constituer une clé primaire pour les indicateurs
-            unit = Unit(row[11], row[12])
+            unit = self.fcf.createUnit(row[11], row[18], row[12])
+            print(unit)
             indicator = self.fcf.createIndicator(str(row[4])+str(row[11])+str(row[14]), row[14], row[15], row[6], IndicatorGroup, unit)
             measurement = self.fcf.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
             self.Tableau.append(measurement)
@@ -44,6 +45,8 @@ class FoodCropsDataset:
 
             createDict(str(row[4]), measurement, self.geographicalLocation)#ok
             #self.geographicalLocation[str(row[4])] = measurement
+
+
 
             ## On implémente un compteur i qui fait arrêter la boucle au bout de 5 itérations, afin de récupérer un nombre suffisant et pas trop important de données
             i += 1
