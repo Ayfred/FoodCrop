@@ -35,7 +35,7 @@ class FoodCropFactory:
     def createRatio(self, id):
         return Ratio(id, "Ratio")
 ## On va collecter les produits grâce à leurs identifiants : si les id sont dans le dictionnaire alors on retourne la donnée en String
-    def createCommodity(self, id, name):
+    def createCommodity(self, commodityGroup, id, name):
         if id in self.commodityDico:
             return self.commodityDico[str(id)]
         self.commodityDico[str(id)] = Commodity(id, name)
@@ -56,5 +56,11 @@ class FoodCropFactory:
     def createMeasurement(self, id, year, value, timeperiodId, timeperiodDesc, commodity, indicator):
         return Measurement(id, year, value, timeperiodId, timeperiodDesc, commodity, indicator)
 
-
-
+    def createUnit(self,id, descr):
+        match id:
+            case "4", "5", "6", "12", "13", "14", "31", "45": return self.createRatio(id)
+            case "7", "8", "9", "16", "41": return self.createWeight(id)
+            case "1", "3", "17", "18":return  self.createVolume(id)
+            case "2", "11", "44": return self.createSurface(id)
+            case "15": return self.createPrice(id)
+            case "46": return self.createCount(id, descr)
