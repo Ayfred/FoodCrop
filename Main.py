@@ -1,9 +1,10 @@
 import pandas
 
+
 from FoodCropsDataset import FoodCropsDataset
 
-dataframe = pandas.read_csv("FeedGrains.csv")
+#dataframe = pandas.read_csv("D:/maxim/Documents/Python/FeedGrainstest.csv")
 fcd = FoodCropsDataset()
-fcd.load("FeedGrains.csv")
+fcd.load("D:/maxim/Documents/Python/FeedGrainstest.csv")
 
 

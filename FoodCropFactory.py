@@ -14,27 +14,47 @@ class FoodCropFactory:
 
     ## Création de volume
     def createVolume(self, id):
-        return Volume(id, "Volume")
-## Création des prix
+        if id in self.unitDico:
+            return self.unitDico[str(id)]
+        self.unitDico[str(id)] = Volume(id)
+        return self.unitDico[str(id)]
+
+    ## Création des prix
     def createPrice(self, id):
-        return Price(id, "Price")
-## Création des poids
+        if id in self.unitDico:
+            return self.unitDico[str(id)]
+        self.unitDico[str(id)] = Price(id)
+        return self.unitDico[str(id)]
+
+    ## Création des poids
     def createWeight(self, id, weight):
-        w = Weight(id, "Weight")
-        w.multiplier = weight
-        return w
-##Création de surfaces
+        if id in self.unitDico:
+            return self.unitDico[str(id)]
+        self.unitDico[str(id)] = Weight(id, weight)
+        return self.unitDico[str(id)]
+
+    ##Création de surfaces
     def createSurface(self, id):
-        return Surface(id, "Surface")
+        if id in self.unitDico:
+            return self.unitDico[str(id)]
+        self.unitDico[str(id)] = Surface(id)
+        return self.unitDico[str(id)]
+
     ##Création d'un paramètre de comptage
     def createCount(self, id, what):
-        c = Count(id, "Count")
-        c.what = what
-        return c
+        if id in self.unitDico:
+            return self.unitDico[str(id)]
+        self.unitDico[str(id)] = Count(id, what)
+        return self.unitDico[str(id)]
+
 ##Création d'un paramètre de ratio
     def createRatio(self, id):
-        return Ratio(id, "Ratio")
-## On va collecter les produits grâce à leurs identifiants : si les id sont dans le dictionnaire alors on retourne la donnée en String
+        if id in self.unitDico:
+            return self.unitDico[str(id)]
+        self.unitDico[str(id)] = Ratio(id)
+        return self.unitDico[str(id)]
+
+    ## On va collecter les produits grâce à leurs identifiants : si les id sont dans le dictionnaire alors on retourne la donnée en String
     def createCommodity(self, id, name):
         if id in self.commodityDico:
             return self.commodityDico[str(id)]
@@ -44,10 +64,10 @@ class FoodCropFactory:
 
 ##Création d'un indicateur prenant en argument un identifiant, une fréquence, une description de fréquence une localisation GPS, etc.
     ##On fait appel au dictionnaire Indicator. Si un id se trouve dans le dico, la méthode renvoie le Indicator en string
-    def createIndicator(self, id, frequency, freqDesc, geogLocation, indicatorGroup):
+    def createIndicator(self, id, frequency, freqDesc, geogLocation, indicatorGroup, unit):
         if id in self.indicatorDico:
             return self.indicatorDico[str(id)]
-        self.indicatorDico[str(id)] = Indicator(id, frequency, freqDesc, geogLocation, indicatorGroup)
+        self.indicatorDico[str(id)] = Indicator(id, frequency, freqDesc, geogLocation, indicatorGroup, unit)
         return self.indicatorDico[str(id)]
 
 ## Création de mesures
