@@ -50,10 +50,10 @@ class FoodCropsDataset:
             if i == 16: break
 
         #ok
-        #print("geographical : ")
-        #print(self.geographicalLocation)
-        #print("size : "+ str(len(self.geographicalLocation)))
-        #print("geographical : " + str(len(self.geographicalLocation['1.0'])))
+        print("geographical : ")
+        print(self.geographicalLocation)
+        print("size : "+ str(len(self.geographicalLocation)))
+        print("geographical : " + str(len(self.geographicalLocation['1.0'])))
 
         #print("unit : ")
         #print(self.unit)
