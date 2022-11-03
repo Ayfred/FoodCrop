@@ -19,7 +19,6 @@ class FoodCropsDataset:
         self.indicatorGroup = {}
         self.geographicalLocation = {}
         self.unitGroup = {}
-        self.commodityType = dict()
         self.fcf = FoodCropFactory()
 
 
@@ -54,8 +53,31 @@ class FoodCropsDataset:
             dict[id] = [measure]
 
 ## En cours de construction
-    def findMeasurements(self, commodityType = None, IndicatorGroup = None, geographicalLocation = None, unit = None):
+    def findMeasurements(self, commodityGroupId = None, indicatorGroupId = None, geographicalLocationId = None, unitId = None):
+        result = []
+        if commodityGroupId != None :
+            result += self.commodityGroup[commodityGroupId]
+        else:
+            if indicatorGroupId != None :
+                result += self.indicatorGroup[indicatorGroupId]
+            else:
+                if geographicalLocationId != None :
+                    result += self.geographicalLocation[geographicalLocationId]
+                else:
+                    if unitId != None :
+                        result += self.commodityGroup[unitId]
+        if indicatorGroupId != None :
+            merge(result, self.indicatorGroup[indicatorGroupId])
+        if geographicalLocationId != None :
+            merge(result, self.geographicalLocation[geographicalLocationId])
+        if unitId != None :
+            merge(result, self.commodityGroup[unitId])
+        return result
 
 
-
-
+def merge(l, m):
+    r = []
+    for x in l:
+        if x in m:
+            r.append(x)
+    return r
