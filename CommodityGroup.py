@@ -1,17 +1,18 @@
 from enum import Enum
-
+## Idem, à quoi ça sert ?
 class CommodityGroup(Enum):
-        CORN = 1
-        BARLEY = 2
-        OATS = 3
-        SORGHUM = 4
-        BYPRODUCT_FEEDS = 5
-        COARSE_GRAINS = 6
-        HAY = 7
-        FEED_GRAINS = 8
-        ANIMAL_PROTEIN_FEEDS = 9
-        GRAIN_PROTEIN_FEEDS = 10
-        PROCESSED_FEEDS = 11
-        ENERGY_FEEDS = 12
-        OTHER = 13
+
+        # Animal protein feeds = 8
+        Barley = 9
+        # "Byproduct feeds" =10
+        # "Coarse grains" =11
+        # Corn = 12
+        # "Energy feeds" =13
+        # Feed grains = 14
+        # Grain protein feeds = 15
+        # Hay = 16
+        # Oats = 17
+        # Oilseed meal feeds = 18
+        # Processed feeds = 19
+        # Sorghum = 20
 

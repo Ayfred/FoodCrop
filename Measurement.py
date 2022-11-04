@@ -20,6 +20,3 @@ class Measurement(Describable):
         self.__timePeriodDesc = timePeriodDesc
         self.commidity = Commodity
         self.indicator = Indicator
-
-
-
