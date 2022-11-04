@@ -17,6 +17,7 @@ class FoodCropFactory:
         if id in self.unitDico:
             return self.unitDico[str(id)]
         self.unitDico[str(id)] = Volume(id)
+        Volume.describe(Volume(id))
         return self.unitDico[str(id)]
 
     ## Création des prix

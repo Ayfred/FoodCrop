@@ -7,6 +7,7 @@ class Unit(Describable, ABC):
     def __init__(self, id, name):
         self.id = id
         self.name = name
+        self.description = {}
 
     def describe(self):
         return self.id, self.name
@@ -16,7 +17,7 @@ class Volume(Unit):
         super().__init__(id, "Volume")
 
     def describe(self):
-        return self.id, self.name
+        return self.name
 
 class Weight(Unit):
 ## En plus des autres constructeurs, on instancie dans celui-là un multiplicateur
@@ -32,7 +33,7 @@ class Ratio(Unit):
         super().__init__(id, "Ratio")
 
     def describe(self):
-        return self.name + self.id
+        pass
 
 class Price(Unit):
     def __init__(self, id):

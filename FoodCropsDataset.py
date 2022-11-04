@@ -17,7 +17,7 @@ class FoodCropsDataset:
         self.indicatorGroup = {}
         self.geographicalLocation = {}
         self.unit = {}
-        self.fcf = FoodCropFactory()
+        self.foodcropfactory = FoodCropFactory()
 
 ## La méthode load permet de charger depuis le fichier Excel les colonnes de données associées aux paramètres utilisés
     def load(self, datasetPath):
@@ -25,27 +25,17 @@ class FoodCropsDataset:
         i = 0
         for index, row in dataframe.iterrows():#row commence à 1 donc imax = 16 si il y a 17 lignes sur excel
 
-            commodity = self.fcf.createCommodity(str(row[7]), str(row[8]))
+            commodity = self.foodcropfactory.createCommodity(str(row[7]), str(row[8]))
             ## On additionne les chaînes de caractères des colonnes 4 et 14 afin de constituer une clé primaire pour les indicateurs
-            unit = self.fcf.createUnit(row[11], row[18], row[12])
-            indicator = self.fcf.createIndicator(str(row[4])+str(row[11])+str(row[14]), row[14], row[15], row[6], IndicatorGroup, unit)
-            measurement = self.fcf.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
+            unit = self.foodcropfactory.createUnit(row[11], row[18], row[12])
+            indicator = self.foodcropfactory.createIndicator(str(row[4]) + str(row[11]) + str(row[14]), row[14], row[15], row[6], IndicatorGroup, unit)
+            measurement = self.foodcropfactory.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
             self.Tableau.append(measurement)
 
             createDict(indicator.id, measurement, self.indicatorGroup)
-            #self.indicatorGroup[indicator.id] = measurement
-
             createDict(str(row[2]), measurement, self.commodityGroup)#ok
-            #self.commodityGroup[str(row[2])] = measurement
-
             createDict(indicator.unit.id, measurement, self.unit)#ok
-            #self.unit[indicator.unit.id] = measurement
-
             createDict(str(row[4]), measurement, self.geographicalLocation)#ok
-            #self.geographicalLocation[str(row[4])] = measurement
-
-
-
             ## On implémente un compteur i qui fait arrêter la boucle au bout de 5 itérations, afin de récupérer un nombre suffisant et pas trop important de données
             i += 1
             if i == 16: break
