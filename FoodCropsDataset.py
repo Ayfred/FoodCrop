@@ -17,7 +17,7 @@ class FoodCropsDataset:
         self.indicatorGroup = {}
         self.geographicalLocation = {}
         self.unit = {}
-        self.foodcropfactory = FoodCropFactory()
+        self.fcf = FoodCropFactory()
 
 ## La méthode load permet de charger depuis le fichier Excel les colonnes de données associées aux paramètres utilisés
     def load(self, datasetPath):
@@ -25,17 +25,16 @@ class FoodCropsDataset:
         i = 0
         for index, row in dataframe.iterrows():#row commence à 1 donc imax = 16 si il y a 17 lignes sur excel
 
-            commodity = self.foodcropfactory.createCommodity(str(row[7]), str(row[8]))
-            ## On additionne les chaînes de caractères des colonnes 4 et 14 afin de constituer une clé primaire pour les indicateurs
-            unit = self.foodcropfactory.createUnit(row[11], row[18], row[12])
-            indicator = self.foodcropfactory.createIndicator(str(row[4]) + str(row[11]) + str(row[14]), row[14], row[15], row[6], IndicatorGroup, unit)
-            measurement = self.foodcropfactory.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
+            commodity = self.fcf.createCommodity(int(row[7]), str(row[8]))
+            unit = self.fcf.createUnit(int(row[11]), row[12])
+            indicator = self.fcf.createIndicator(row[0], row[14], row[15], row[6], IndicatorGroup(int(row[0])), unit)
+            measurement = self.fcf.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
             self.Tableau.append(measurement)
 
-            createDict(indicator.id, measurement, self.indicatorGroup)
-            createDict(str(row[2]), measurement, self.commodityGroup)#ok
-            createDict(indicator.unit.id, measurement, self.unit)#ok
-            createDict(str(row[4]), measurement, self.geographicalLocation)#ok
+            addDict(indicator.id, measurement, self.indicatorGroup)
+            addDict(str(row[2]), measurement, self.commodityGroup)#ok
+            addDict(indicator.unit.id, measurement, self.unit)#ok
+            addDict(str(row[4]), measurement, self.geographicalLocation)#ok
             ## On implémente un compteur i qui fait arrêter la boucle au bout de 5 itérations, afin de récupérer un nombre suffisant et pas trop important de données
             i += 1
             if i == 16: break
@@ -67,7 +66,7 @@ class FoodCropsDataset:
 
 
 
-def createDict(key, value, dict):
+def addDict(key, value, dict):
     if key not in dict:
         dict[key] = []
     dict[key].append(value)
