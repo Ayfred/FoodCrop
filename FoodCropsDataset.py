@@ -12,7 +12,7 @@ class FoodCropsDataset:
 ## On crée des ensembles pour collecter les données d'IndicatorGroup, commodityGroup, Unit, commodityType
 
     def __init__(self):
-        self.Tableau = []
+        self.tableau = []
         self.commodityGroup = {}
         self.indicatorGroup = {}
         self.geographicalLocation = {}
@@ -29,7 +29,7 @@ class FoodCropsDataset:
             unit = self.fcf.createUnit(int(row[11]), row[12])
             indicator = self.fcf.createIndicator(row[0], row[14], row[15], row[6], IndicatorGroup(int(row[0])), unit)
             measurement = self.fcf.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
-            self.Tableau.append(measurement)
+            self.tableau.append(measurement)
 
             addDict(indicator.id, measurement, self.indicatorGroup)
             addDict(str(row[2]), measurement, self.commodityGroup)#ok
@@ -38,32 +38,7 @@ class FoodCropsDataset:
             ## On implémente un compteur i qui fait arrêter la boucle au bout de 5 itérations, afin de récupérer un nombre suffisant et pas trop important de données
             i += 1
             if i == 16: break
-
-        #ok
-        print("geographical : ")
-        print(self.geographicalLocation)
-        print("size : "+ str(len(self.geographicalLocation)))
-        print("geographical : " + str(len(self.geographicalLocation['1.0'])))
-
-        #print("unit : ")
-        #print(self.unit)
-        #print(len(self.unit))
-
-        #print("commodity Group : ")
-        #print(self.commodityGroup)
-        #print(len(self.commodityGroup))
-        #print("commidity : " + str(len(self.commodityGroup['17.0'])))
-
-
-        #print("indicatorGroup : ")
-        #print(self.indicatorGroup)
-        #print(len(self.indicatorGroup))
-
-        #ok
-        #print("Tableau : ")
-        #print(self.Tableau)
-        #print(len(self.Tableau))
-
+        print(self.tableau)
 
 
 def addDict(key, value, dict):

@@ -75,18 +75,30 @@ class FoodCropFactory:
     def createMeasurement(self, id, year, value, timeperiodId, timeperiodDesc, commodity, indicator):
         return Measurement(id, year, value, timeperiodId, timeperiodDesc, commodity, indicator)
 
-    def createUnit(self, id, weight, what):
+    def createUnit(self, id, name):
         #match ne marche que pour Python 3.10 ou ultérieure
         match id:
-            case 4.0| 5.0 | 6.0 | 12.0 | 13.0 | 14.0 | 31.0 | 45.0:
+            case 4 | 5 | 6 | 12 | 13 | 14 | 31 | 45:
                 return self.createRatio(id)
-            case 7.0 | 8.0 | 9.0 | 16.0 | 41.0:
-                return self.createWeight(id, weight)
-            case 1.0 | 3.0 | 17.0 | 18.0:
+            case 7 | 8 | 9 | 41:
+                return self.createWeight(id, self.getMultiplier(id))
+            case 1 | 3 | 17 | 18:
                 return self.createVolume(id)
-            case 2.0 | 11.0 | 44.0:
+            case 2 | 11 | 44:
                 return self.createSurface(id)
-            case 15.0:
+            case 15:
                 return self.createPrice(id)
-            case 46.0:
-                return self.createCount(id, what)
+            case 16 | 46:
+                return self.createCount(id, name)
+
+    def getMultiplier(self, id):
+        match id:
+            case 7:
+                return 1000.
+            case 8:
+                return 10**9.
+            case 9:
+                return 907185.
+            case 41:
+                return 907.185
+
