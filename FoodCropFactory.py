@@ -38,7 +38,7 @@ class FoodCropFactory:
     def createCommodity(self, commodityGroup, id, name):
         if id in self.commodityDico:
             return self.commodityDico[str(id)]
-        self.commodityDico[str(id)] = Commodity(id, name)
+        self.commodityDico[str(id)] = Commodity(commodityGroup, id, name)
         return self.commodityDico[str(id)]
 
 

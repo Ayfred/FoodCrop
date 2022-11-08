@@ -15,4 +15,5 @@ class CommodityGroup(Enum):
         OILSEED_MEAL_FEEDS = 18
         PROCESSED_FEEDS = 19
         SORGHUM = 20
+        OTHER = 21
 

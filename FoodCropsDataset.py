@@ -28,7 +28,7 @@ class FoodCropsDataset:
         dataframe = pandas.read_csv(datasetPath)
         for index, row in dataframe.iterrows():#row commence à 1 donc imax = 16 si il y a 17 lignes sur excel
 
-            commodity = self.fcf.createCommodity(int(row[7]), str(row[8]))
+            commodity = self.fcf.createCommodity(CommodityGroup(self.commodityGrp(row[2])), int(row[7]), str(row[8]))
             unit = self.fcf.createUnit(int(row[11]), row[12])
             indicator = self.fcf.createIndicator(row[0], row[14], row[15], row[6], IndicatorGroup(int(row[0])), unit)
             measurement = self.fcf.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
@@ -36,7 +36,7 @@ class FoodCropsDataset:
 
             self.addDict(indicator.id, measurement, self.indicatorGroup)
             print(index)
-            self.addDict(int(row[2]), measurement, self.commodityGroup)#ok
+            self.addDict(self.commodityGrp(row[2]), measurement, self.commodityGroup)#ok
             self.addDict(indicator.unit.id, measurement, self.unit)#ok
             self.addDict(int(row[4]), measurement, self.geographicalLocation)#ok
 
@@ -74,6 +74,11 @@ class FoodCropsDataset:
         else:
             return self.tableau
 
+    def commodityGrp(self, id):
+        if id is None :
+            return CommodityGroup(21)
+        else:
+            return CommodityGroup(int(id))
 
 def merge(l, m):
     r = []
