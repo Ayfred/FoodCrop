@@ -1,7 +1,10 @@
 import enum
 
 import pandas
-#import tqdm as tqdm
+import tqdm as tqdm
+
+from Commodity import Commodity
+from CommodityGroup import CommodityGroup
 from FoodCropFactory import FoodCropFactory
 from IndicatorGroup import IndicatorGroup
 from Unit import Unit
@@ -12,61 +15,70 @@ class FoodCropsDataset:
 ## On crée des ensembles pour collecter les données d'IndicatorGroup, commodityGroup, Unit, commodityType
 
     def __init__(self):
-        self.tableau = []
+        self.tableau = set()
         self.commodityGroup = {}
         self.indicatorGroup = {}
         self.geographicalLocation = {}
-        self.unit = {}
+        self.unitGroup = {}
         self.fcf = FoodCropFactory()
+
 
 ## La méthode load permet de charger depuis le fichier Excel les colonnes de données associées aux paramètres utilisés
     def load(self, datasetPath):
         dataframe = pandas.read_csv(datasetPath)
-        i = 0
         for index, row in dataframe.iterrows():#row commence à 1 donc imax = 16 si il y a 17 lignes sur excel
 
-            commodity = self.fcf.createCommodity(int(row[7]), str(row[8]))
+            commodity = self.fcf.createCommodity(CommodityGroup(self.commodityGrp(row[2])), int(row[7]), str(row[8]))
             unit = self.fcf.createUnit(int(row[11]), row[12])
             indicator = self.fcf.createIndicator(row[0], row[14], row[15], row[6], IndicatorGroup(int(row[0])), unit)
             measurement = self.fcf.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
-            self.tableau.append(measurement)
+            self.tableau.add(measurement)
 
-            addDict(indicator.id, measurement, self.indicatorGroup)
-            addDict(str(row[2]), measurement, self.commodityGroup)#ok
-            addDict(indicator.unit.id, measurement, self.unit)#ok
-            addDict(str(row[4]), measurement, self.geographicalLocation)#ok
-            ## On implémente un compteur i qui fait arrêter la boucle au bout de 5 itérations, afin de récupérer un nombre suffisant et pas trop important de données
-            i += 1
-            if i == 16: break
-        print(self.tableau)
+            self.addDict(indicator.id, measurement, self.indicatorGroup)
+            print(index)
+            self.addDict(self.commodityGrp(row[2]), measurement, self.commodityGroup)#ok
+            self.addDict(indicator.unit.id, measurement, self.unit)#ok
+            self.addDict(int(row[4]), measurement, self.geographicalLocation)#ok
 
-
-def addDict(key, value, dict):
-    if key not in dict:
-        dict[key] = []
-    dict[key].append(value)
+# Permet d'ajouter des mesures aux dictionnaires, en vérifiant si la liste associé à l'id existe déjà
+    def addDict(self, key, value, dict):
+        if key not in dict:
+            dict[key] = set()
+        dict[key].add(value)
 
     def findMeasurements(self, commodityGroupId = None, indicatorGroupId = None, geographicalLocationId = None, unitId = None):
-        result = []
-        if commodityGroupId != None :
-            result += self.commodityGroup[commodityGroupId]
+        result = {}
+        if commodityGroupId is not None:
+            result = self.commodityGroup[commodityGroupId]
+            if indicatorGroupId is not None:
+                result = result & self.indicatorGroup[indicatorGroupId]
+            if geographicalLocationId is not None:
+                result = result & self.geographicalLocation[geographicalLocationId]
+            if unitId is not None:
+                result = result & self.commodityGroup[unitId]
+            return result
+        elif indicatorGroupId is not None:
+            result = self.indicatorGroup[indicatorGroupId]
+            if geographicalLocationId is not None:
+                result = result & self.geographicalLocation[geographicalLocationId]
+            if unitId is not None:
+                result = result & self.commodityGroup[unitId]
+            return result
+        elif geographicalLocationId is not None:
+            result = self.geographicalLocation[geographicalLocationId]
+            if unitId is not None:
+                result = result & self.commodityGroup[unitId]
+            return result
+        elif unitId is not None:
+            result = self.commodityGroup[unitId]
         else:
-            if indicatorGroupId != None :
-                result += self.indicatorGroup[indicatorGroupId]
-            else:
-                if geographicalLocationId != None :
-                    result += self.geographicalLocation[geographicalLocationId]
-                else:
-                    if unitId != None :
-                        result += self.commodityGroup[unitId]
-        if indicatorGroupId != None :
-            merge(result, self.indicatorGroup[indicatorGroupId])
-        if geographicalLocationId != None :
-            merge(result, self.geographicalLocation[geographicalLocationId])
-        if unitId != None :
-            merge(result, self.commodityGroup[unitId])
-        return result
+            return self.tableau
 
+    def commodityGrp(self, id):
+        if id is None :
+            return CommodityGroup(21)
+        else:
+            return CommodityGroup(int(id))
 
 def merge(l, m):
     r = []
@@ -74,7 +86,3 @@ def merge(l, m):
         if x in m:
             r.append(x)
     return r
-
-
-
-

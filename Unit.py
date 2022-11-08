@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from Describable import Describable
 
-
+## Instanciation de identifiant et nom dans le constructeur
 class Unit(Describable, ABC):
 
     def __init__(self, id, name):
@@ -9,9 +9,10 @@ class Unit(Describable, ABC):
         self.name = name
         self.description = {}
 
+## Permet de rechercher l'identifiant et le nom d'un paramètre (permet d'avoir plus d'infos sur un paramètre)
     def describe(self):
         return self.id, self.name
-
+## Sous-classe de Unit, on fait appel à la méthode super() dans le constructeur afin de souligner l'hérédité
 class Volume(Unit):
     def __init__(self, id):
         super().__init__(id, "Volume")
@@ -27,7 +28,7 @@ class Weight(Unit):
 
     def describe(self):
         return self.id, self.name, self.multiplier
-
+## Rien ne change pour le reste pour l'instant
 class Ratio(Unit):
     def __init__(self, id):
         super().__init__(id, "Ratio")
