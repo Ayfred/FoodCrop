@@ -56,10 +56,10 @@ class FoodCropFactory:
         return self.unitDico[str(id)]
 
     ## On va collecter les produits grâce à leurs identifiants : si les id sont dans le dictionnaire alors on retourne la donnée en String
-    def createCommodity(self, id, name):
+    def createCommodity(self,commodityGroup,  id, name):
         if id in self.commodityDico:
             return self.commodityDico[str(id)]
-        self.commodityDico[str(id)] = Commodity(id, name)
+        self.commodityDico[str(id)] = Commodity(commodityGroup, id, name)
         return self.commodityDico[str(id)]
 
     ##Création d'un indicateur prenant en argument un identifiant, une fréquence, une description de fréquence une localisation GPS, etc.

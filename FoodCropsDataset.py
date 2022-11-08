@@ -37,7 +37,7 @@ class FoodCropsDataset:
             self.addDict(indicator.id, measurement, self.indicatorGroup)
             print(index)
             self.addDict(self.commodityGrp(row[2]), measurement, self.commodityGroup)#ok
-            self.addDict(indicator.unit.id, measurement, self.unit)#ok
+            self.addDict(indicator.unit.id, measurement, unit)#ok
             self.addDict(int(row[4]), measurement, self.geographicalLocation)#ok
 
 # Permet d'ajouter des mesures aux dictionnaires, en vérifiant si la liste associé à l'id existe déjà
