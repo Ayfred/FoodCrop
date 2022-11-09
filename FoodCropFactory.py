@@ -76,6 +76,8 @@ class FoodCropFactory:
         return Measurement(id, year, value, timeperiodId, timeperiodDesc, commodity, indicator)
 
     def createUnit(self, id, name):
+        if id in self.unitDico:
+            return self.indicatorDico[str(id)]
         #match ne marche que pour Python 3.10 ou ultérieure
         match id:
             case 4 | 5 | 6 | 12 | 13 | 14 | 31 | 45:
@@ -84,7 +86,7 @@ class FoodCropFactory:
                 return self.createWeight(id, self.getMultiplier(id))
             case 1 | 3 | 17 | 18:
                 return self.createVolume(id)
-            case 2 | 11 | 44:
+            case 2 | 10 | 11 | 44:
                 return self.createSurface(id)
             case 15:
                 return self.createPrice(id)

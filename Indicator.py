@@ -18,3 +18,7 @@ class Indicator(Describable):
 
     def describe(self):
         return self.id, self.__freqDesc
+
+    def getUnitId(self):
+        return self.unit.id
+
