@@ -4,19 +4,25 @@ from Indicator import Indicator
 
 
 class Measurement(Describable):
-    def describe(self):
-        pass
 
-    year = int
-    value = float
-    timeperiodId = int
-    timeperiodDescr = str
-
-    def __init__(self, id: int, year, value: float, timeperiodId : int, timePeriodDesc, Commodity, Indicator):
+    def __init__(self, id: int, year, value: float, timeperiodId: int, timePeriodDesc, Commodity, Indicator):
         self.id = id
-        self.__year = year
-        self.__value = value
-        self.__timeperiodId = timeperiodId
-        self.__timePeriodDesc = timePeriodDesc
-        self.commidity = Commodity
+        self.year = year
+        self.value = value
+        self.timeperiodId = timeperiodId
+        self.timePeriodDesc = timePeriodDesc
+        self.commodity = Commodity
         self.indicator = Indicator
+
+    def describe(self):
+        return "This measure (id : "+ self.id +") was made in " + self.year + " on  " + self.timePeriodDesc \
+               + self.commodity.describe() + self.indicator.describe(value)
+
+    def getPeriod(self, id):
+        match id:
+            case 1:
+                return "monthly"
+            case 2:
+                return "quarterly"
+            case 3:
+                return "annually"

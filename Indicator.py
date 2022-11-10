@@ -16,8 +16,11 @@ class Indicator(Describable):
         self.indicatorGroup = indicatorGroup
         self.unit = unit
 
-    def describe(self):
-        return self.id, self.__freqDesc
+    def describe(self, value=None):
+        if value is None :
+            return self.id, self.__freqDesc
+        else:
+            return
 
     def getUnitId(self):
         return self.unit.id
