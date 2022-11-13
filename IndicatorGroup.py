@@ -1,5 +1,6 @@
 from enum import Enum
 class IndicatorGroup(Enum):
+
     PRICES = 1
     SUPPLY_AND_USE = 2
     EXPORT_AND_IMPORT = 3
