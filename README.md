@@ -1,9 +1,9 @@
-Projet python : FoodCrop, gestion de données à partir d'un tableau csv
+Projet Python : FoodCrop, gestion de données à partir d'un tableau csv
 
-By Ayadar Yunus, Mu Maxime, Foray Léo-Paul
+By Aydar Yunus, Mu Maxime, Foray Léo-Paul
 
 Nous avons développé sur l'IDE Pycharm car nous l'utilisions déjà et son utilisation est intuitive. 
-Le code était partagé en git via le gitlab de l'école, et nous avons utilisé python 3.10.
+Le code était partagé en git via le gitlab de l'école, et nous avons utilisé la version de Python 3.10.
 
 Concernant l'utilisation de notre programme, il faut le faire tourner sur la classe Main.
 Celle ci contient par défaut les instructions :
