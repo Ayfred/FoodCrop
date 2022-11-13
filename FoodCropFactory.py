@@ -8,12 +8,15 @@ from Unit import Volume, Price, Weight, Surface, Count, Ratio
 class FoodCropFactory:
     def __init__(self) -> None:
         super().__init__()
+
+        ## Création des dictionnaires
         self.commodityDico = {}
         self.indicatorDico = {}
         self.unitDico = {}
 
     ## Création de volume
     def createVolume(self, id):
+        ## On enregistre l'identifiant dans le dictionnaire unitDico que si ce dernier n'est pas présent dans le dictionnaire
         if id in self.unitDico:
             return self.unitDico[str(id)]
         self.unitDico[str(id)] = Volume(id)
@@ -22,6 +25,7 @@ class FoodCropFactory:
 
     ## Création des prix
     def createPrice(self, id):
+        ## On enregistre l'identifiant dans le dictionnaire unitDico que si ce dernier n'est pas présent dans le dictionnaire
         if id in self.unitDico:
             return self.unitDico[str(id)]
         self.unitDico[str(id)] = Price(id)
@@ -29,6 +33,7 @@ class FoodCropFactory:
 
     ## Création des poids
     def createWeight(self, id, weight):
+        ## On enregistre l'identifiant dans le dictionnaire unitDico que si ce dernier n'est pas présent dans le dictionnaire
         if id in self.unitDico:
             return self.unitDico[str(id)]
         self.unitDico[str(id)] = Weight(id, weight)
@@ -36,6 +41,7 @@ class FoodCropFactory:
 
     ##Création de surfaces
     def createSurface(self, id):
+        ## On enregistre l'identifiant dans le dictionnaire unitDico que si ce dernier n'est pas présent dans le dictionnaire
         if id in self.unitDico:
             return self.unitDico[str(id)]
         self.unitDico[str(id)] = Surface(id)
@@ -43,6 +49,7 @@ class FoodCropFactory:
 
     ##Création d'un paramètre de comptage
     def createCount(self, id, what):
+        ## On enregistre l'identifiant dans le dictionnaire unitDico que si ce dernier n'est pas présent dans le dictionnaire
         if id in self.unitDico:
             return self.unitDico[str(id)]
         self.unitDico[str(id)] = Count(id, what)
@@ -110,7 +117,8 @@ class FoodCropFactory:
     def createUnit(self, id, name):
         if id in self.unitDico:
             return self.indicatorDico[str(id)]
-        #match ne marche que pour Python 3.10 ou ultérieure
+        # match ne marche que pour Python 3.10 ou ultérieure
+        # Distinction des différents cas de produits avec leur id
         match id:
             case 4 | 5 | 6 | 11 | 12 | 13 | 14 | 31 | 45:
                 return self.createRatio(id)
