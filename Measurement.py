@@ -16,7 +16,7 @@ class Measurement(Describable):
 
     def describe(self):
         return ("Measurement id : " + str(self.id) + " made in " + str(self.year) +  " on  " + self.timePeriodDesc \
-                + " id timePeriod: " + str(self.timeperiodId) + "\n" + self.commodity.describe() + "\n"
+                + ", id timePeriod: " + str(self.timeperiodId) + "\n" + self.commodity.describe() + "\n"
                 + self.indicator.describe()) + "\n"
 
     def getPeriod(self, id):
