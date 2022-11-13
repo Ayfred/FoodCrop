@@ -55,32 +55,32 @@ class FoodCropFactory:
         """
         match(id):
             case 4:
-                numerateur = self.createPrice(47, "Dollars")
-                denominateur = self.createVolume(3, "Bushels")
+                numerateur = self.createPrice(47)
+                denominateur = self.createVolume(3)
             case 5:
-                numerateur = self.createPrice(47, "Dollars")
-                denominateur = self.createWeight(48, "CRW", 50.80)
+                numerateur = self.createPrice(47)
+                denominateur = self.createWeight(48, 50.80)
             case 6:
-                numerateur = self.createVolume(3, "Bushels")
-                denominateur = self.createSurface(49, "Acre")
+                numerateur = self.createVolume(3)
+                denominateur = self.createSurface(49)
             case 11:
-                numerateur = self.createWeight(41, "Ton", 907.185)
-                denominateur = self.createSurface(49, "Acre")
+                numerateur = self.createWeight(41, 907.185)
+                denominateur = self.createSurface(49)
             case 12:
-                numerateur = self.createPrice(47, "Dollars")
-                denominateur = self.createWeight(41, "Ton", 907.185)
+                numerateur = self.createPrice(47)
+                denominateur = self.createWeight(41, 907.185)
             case 13:
-                numerateur = self.createCount(50, "Unidentifiable", "unidentifiable part of a ratio")
-                denominateur = self.createCount(50, "Unidentifiable", "unidentifiable part of a ratio")
+                numerateur = self.createCount(50, "unidentifiable part of a ratio")
+                denominateur = self.createCount(50, "unidentifiable part of a ratio")
             case 14:
-                numerateur = self.createPrice(51, "Cents")
-                denominateur = self.createWeight(52, "Pound", 0.454)
+                numerateur = self.createPrice(51)
+                denominateur = self.createWeight(52, 0.454)
             case 31:
-                numerateur = self.createPrice(47, "Dollars")
-                denominateur = self.createWeight(41, "Ton", 907.185)
+                numerateur = self.createPrice(47)
+                denominateur = self.createWeight(41, 907.185)
             case 45:
-                numerateur = self.createWeight(53, "Metric tons", 1000.)
-                denominateur = self.createSurface(54, "Hectare")
+                numerateur = self.createWeight(53, 1000.)
+                denominateur = self.createSurface(54)
 
         if id in self.unitDico:
             return self.unitDico[str(id)]

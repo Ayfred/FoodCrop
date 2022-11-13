@@ -30,14 +30,16 @@ class FoodCropsDataset:
 
             commodity = self.fcf.createCommodity(CommodityGroup(self.findCommodityGroup(row[2])), int(row[7]), str(row[8]))
             unit = self.fcf.createUnit(int(row[11]), row[12])
-            indicator = self.fcf.createIndicator(row[0], row[14], row[15], row[6], IndicatorGroup(int(row[0])), unit)
-            measurement = self.fcf.createMeasurement(index, row[13], row[18], row[16], row[17], commodity, indicator)
+            indicator = self.fcf.createIndicator(row[0], int(row[14]), row[15], row[6], IndicatorGroup(int(row[0])), unit)
+            measurement = self.fcf.createMeasurement(index, int(row[13]), float(row[18]), int(row[16]), row[17], commodity, indicator)
             self.tableau.add(measurement)
 
             self.addDict(indicator.id, measurement, self.indicatorGroup)
             self.addDict(self.findCommodityGroup(row[2]), measurement, self.commodityGroupDict)#ok
             self.addDict(unit.id, measurement, self.unitGroup)#ok
             self.addDict(int(row[4]), measurement, self.geographicalLocation)#ok
+
+
 
 # Permet d'ajouter des mesures aux dictionnaires, en vérifiant si la liste associé à l'id existe déjà
     def addDict(self, key, value, dict):

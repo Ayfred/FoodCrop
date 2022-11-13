@@ -7,7 +7,7 @@ class Commodity(Describable):
     def __init__(self, commodityGroup, id, name):
         self.id = id
         self.group = commodityGroup
-        self.__name = name
+        self.name = name
 
     def describe(self):
-        return "Commodity :  id = " + self.id + ", " + self.name + ", group : " + self.group
+        return "Commodity :  id = " + str(self.id) + ", " + self.name + ", group : " + str(self.group)

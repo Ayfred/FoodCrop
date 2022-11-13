@@ -20,7 +20,7 @@ class Volume(Unit):
         super().__init__(id, "Volume")
 
     def describe(self):
-        return "Volume unit, id : " + self.id + " is a " + self.name
+        return "Volume unit, id : " + str(self.id)
 
 class Weight(Unit):
 ## En plus des autres constructeurs, on instancie dans celui-là un multiplicateur
@@ -29,7 +29,7 @@ class Weight(Unit):
         self.multiplier = multiplier
 
     def describe(self):
-        return "Weight unit, id : " + self.id + " is a " + self.name + " which is " + self.multiplier + " kg"
+        return "Weight unit, id : " + str(self.id) + " which is " + self.multiplier + " kg"
 
 
 ## Rien ne change pour le reste pour l'instant
@@ -40,8 +40,7 @@ class Ratio(Unit):
         self.denominateur = denominateur
 
     def describe(self):
-        return "Ratio unit, id : " + self.id + " is a " + self.name \
-               + " numerateur : " + self.numerateur.describe() \
+        return "Ratio unit, id : " + str(self.id) + " numerateur : " + self.numerateur.describe() \
                + " denumerateur : " + self.denominateur.describe()
 
 
@@ -50,7 +49,7 @@ class Price(Unit):
         super().__init__(id, "Price")
 
     def describe(self):
-        return "Price unit, id : " + self.id + " is a " + self.name
+        return "Price unit, id : " + str(self.id)
 
 class Count(Unit):
     def _init_(self, id, what):
@@ -58,11 +57,11 @@ class Count(Unit):
         self.what = what
 
     def describe(self):
-        return "Count unit, id : " + self.id + " is a " + self.name + " of " + self.what
+        return "Count unit, id : " + str(self.id) + " of " + self.what
 
 class Surface(Unit):
     def __init__(self, id):
         super().__init__(id, "Surface")
 
     def describe(self):
-        return "Surface unit, id : " + self.id + " is a " + self.name
+        return "Surface unit, id : " + self.id
