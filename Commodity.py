@@ -1,4 +1,3 @@
-from CommodityGroup import CommodityGroup
 from Describable import Describable
 
 

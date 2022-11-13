@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 from Describable import Describable
 
 ## Instanciation de identifiant et nom dans le constructeur
@@ -23,7 +23,6 @@ class Volume(Unit):
         return "Volume unit, id : " + str(self.id)
 
 class Weight(Unit):
-## En plus des autres constructeurs, on instancie dans celui-là un multiplicateur
     def __init__(self, id, multiplier):
         super().__init__(id, "Weight")
         self.multiplier = multiplier
@@ -32,7 +31,6 @@ class Weight(Unit):
         return "Weight unit, id : " + str(self.id) + " which is " + self.multiplier + " kg"
 
 
-## Rien ne change pour le reste pour l'instant
 class Ratio(Unit):
     def __init__(self, id, numerateur, denominateur):
         super().__init__(id, "Ratio")
