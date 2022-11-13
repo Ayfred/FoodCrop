@@ -29,37 +29,7 @@ Ainsi, Maxime s'est chargé de l'instanciation du modèle API et du bon fonction
 Les différents dictionnaires ont été créés par Léo-Paul, ainsi que les méthodes permettant l'appel à ceux-ci pour la réutilisation d'instances ou encore pour la méthode find() de foodCropDataset. 
 L'ensemble des méthodes describe() et leurs imbriquements ont été réalisés par Yunus, qui a pris soin de commenter les méthodes de l'ensemble du projet et de rendre le code plus clair lorsque nécessaire, notemment en implémentant les conventions PEP de python.
 
-
-
-Version 0.7.1
-
-Changelog :
-- implémentation de Describable (1/?)
-- Réglage de bug
-
---------------------------------------------------------------------------------------------------------------------------------
-
-Version 0.7
-
-Changelog :
-- Load fonctionnel (2/2) -> optimisations possibles?
-- Réglage de bug
-
---------------------------------------------------------------------------------------------------------------------------------
-
-Version 0.6
-
-Changelog :
-- Load fonctionnel (1/2)
-
---------------------------------------------------------------------------------------------------------------------------------
-
-Version 0.4
-
-Changelog :
-- Création de toutes les classes à partir du diagramme des classes
-
---------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
 
 
 Créé et Développé par Ayfred & Yunus & Smilaid
