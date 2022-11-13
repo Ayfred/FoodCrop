@@ -1,7 +1,6 @@
 import enum
 
 import pandas
-import tqdm as tqdm
 
 from Commodity import Commodity
 from CommodityGroup import CommodityGroup
