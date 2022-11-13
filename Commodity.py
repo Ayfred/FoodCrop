@@ -10,4 +10,4 @@ class Commodity(Describable):
         self.__name = name
 
     def describe(self):
-        return "Commodity :  id = " + self.id + ", It's a" + self.name + " which is in the group" + self.group
+        return "Commodity :  id = " + self.id + ", " + self.name + ", group : " + self.group

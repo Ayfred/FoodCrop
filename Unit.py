@@ -12,13 +12,15 @@ class Unit(Describable, ABC):
 ## Permet de rechercher l'identifiant et le nom d'un paramètre (permet d'avoir plus d'infos sur un paramètre)
     def describe(self):
         return self.id, self.name
+
+
 ## Sous-classe de Unit, on fait appel à la méthode super() dans le constructeur afin de souligner l'hérédité
 class Volume(Unit):
     def __init__(self, id):
         super().__init__(id, "Volume")
 
     def describe(self):
-        return self.name
+        return "Volume unit, id : " + self.id + " is a " + self.name
 
 class Weight(Unit):
 ## En plus des autres constructeurs, on instancie dans celui-là un multiplicateur
@@ -27,21 +29,28 @@ class Weight(Unit):
         self.multiplier = multiplier
 
     def describe(self):
-        return self.id, self.name, self.multiplier
+        return "Weight unit, id : " + self.id + " is a " + self.name + " which is " + self.multiplier + " kg"
+
+
 ## Rien ne change pour le reste pour l'instant
 class Ratio(Unit):
-    def __init__(self, id):
+    def __init__(self, id, numerateur, denominateur):
         super().__init__(id, "Ratio")
+        self.numerateur = numerateur
+        self.denominateur = denominateur
 
     def describe(self):
-        pass
+        return "Ratio unit, id : " + self.id + " is a " + self.name \
+               + " numerateur : " + self.numerateur.describe() \
+               + " denumerateur : " + self.denominateur.describe()
+
 
 class Price(Unit):
     def __init__(self, id):
         super().__init__(id, "Price")
 
     def describe(self):
-        return self.id, self.name
+        return "Price unit, id : " + self.id + " is a " + self.name
 
 class Count(Unit):
     def _init_(self, id, what):
@@ -49,11 +58,11 @@ class Count(Unit):
         self.what = what
 
     def describe(self):
-        return self.id, self.name, self.what
+        return "Count unit, id : " + self.id + " is a " + self.name + " of " + self.what
 
 class Surface(Unit):
     def __init__(self, id):
         super().__init__(id, "Surface")
 
     def describe(self):
-        return self.id, self.name
+        return "Surface unit, id : " + self.id + " is a " + self.name

@@ -50,9 +50,41 @@ class FoodCropFactory:
 
     ##Création d'un paramètre de ratio
     def createRatio(self, id):
+        """ Un ratio est une fabrication de deux autres unités,
+        on les ajoutes donc comme attribut du ratio que l'on créé
+        """
+        match(id):
+            case 4:
+                numerateur = self.createPrice(47, "Dollars")
+                denominateur = self.createVolume(3, "Bushels")
+            case 5:
+                numerateur = self.createPrice(47, "Dollars")
+                denominateur = self.createWeight(48, "CRW", 50.80)
+            case 6:
+                numerateur = self.createVolume(3, "Bushels")
+                denominateur = self.createSurface(49, "Acre")
+            case 11:
+                numerateur = self.createWeight(41, "Ton", 907.185)
+                denominateur = self.createSurface(49, "Acre")
+            case 12:
+                numerateur = self.createPrice(47, "Dollars")
+                denominateur = self.createWeight(41, "Ton", 907.185)
+            case 13:
+                numerateur = self.createCount(50, "Unidentifiable", "unidentifiable part of a ratio")
+                denominateur = self.createCount(50, "Unidentifiable", "unidentifiable part of a ratio")
+            case 14:
+                numerateur = self.createPrice(51, "Cents")
+                denominateur = self.createWeight(52, "Pound", 0.454)
+            case 31:
+                numerateur = self.createPrice(47, "Dollars")
+                denominateur = self.createWeight(41, "Ton", 907.185)
+            case 45:
+                numerateur = self.createWeight(53, "Metric tons", 1000.)
+                denominateur = self.createSurface(54, "Hectare")
+
         if id in self.unitDico:
             return self.unitDico[str(id)]
-        self.unitDico[str(id)] = Ratio(id)
+        self.unitDico[str(id)] = Ratio(id, numerateur, denominateur)
         return self.unitDico[str(id)]
 
     ## On va collecter les produits grâce à leurs identifiants : si les id sont dans le dictionnaire alors on retourne la donnée en String
@@ -80,13 +112,13 @@ class FoodCropFactory:
             return self.indicatorDico[str(id)]
         #match ne marche que pour Python 3.10 ou ultérieure
         match id:
-            case 4 | 5 | 6 | 12 | 13 | 14 | 31 | 45:
+            case 4 | 5 | 6 | 11 | 12 | 13 | 14 | 31 | 45:
                 return self.createRatio(id)
             case 7 | 8 | 9 | 41:
                 return self.createWeight(id, self.getMultiplier(id))
             case 1 | 3 | 17 | 18:
                 return self.createVolume(id)
-            case 2 | 10 | 11 | 44:
+            case 2 | 10 | 44:
                 return self.createSurface(id)
             case 15:
                 return self.createPrice(id)
@@ -96,7 +128,7 @@ class FoodCropFactory:
     def getMultiplier(self, id):
         match id:
             case 7:
-                return 1000.
+                return 1000000.
             case 8:
                 return 10**9.
             case 9:

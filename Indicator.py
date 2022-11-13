@@ -10,18 +10,14 @@ class Indicator(Describable):
 
     def __init__(self, id, frequency, freqDesc, geogLocation, indicatorGroup, unit):
         self.id = id
-        self.__frequency = frequency
-        self.__freqDesc = freqDesc
-        self.__geoLocation = geogLocation
+        self.frequency = frequency
+        self.freqDesc = freqDesc
+        self.geoLocation = geogLocation
         self.indicatorGroup = indicatorGroup
         self.unit = unit
 
-    def describe(self, value=None):
-        if value is None :
-            return self.id, self.__freqDesc
-        else:
-            return
+    def describe(self):
+        return "Indicator, id: " + self.id + "is a " + self.indicatorGroup + ", frequency id : " + self.frequency\
+               + ", " + self.freqDesc + ", " + "\n" +  self.unit.describe()
 
-    def getUnitId(self):
-        return self.unit.id
 
