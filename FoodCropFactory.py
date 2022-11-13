@@ -1,5 +1,4 @@
 from Commodity import Commodity
-from CommodityGroup import CommodityGroup
 from Indicator import Indicator
 from Measurement import Measurement
 from Unit import Volume, Price, Weight, Surface, Count, Ratio
@@ -89,6 +88,7 @@ class FoodCropFactory:
                 numerateur = self.createWeight(53, 1000.)
                 denominateur = self.createSurface(54)
 
+        ## On enregistre l'identifiant dans le dictionnaire unitDico que si ce dernier n'est pas présent dans le dictionnaire
         if id in self.unitDico:
             return self.unitDico[str(id)]
         self.unitDico[str(id)] = Ratio(id, numerateur, denominateur)
@@ -96,6 +96,7 @@ class FoodCropFactory:
 
     ## On va collecter les produits grâce à leurs identifiants : si les id sont dans le dictionnaire alors on retourne la donnée en String
     def createCommodity(self,commodityGroup,  id, name):
+        ## On enregistre l'identifiant dans le dictionnaire commodityDico que si ce dernier n'est pas présent dans le dictionnaire
         if id in self.commodityDico:
             return self.commodityDico[str(id)]
         self.commodityDico[str(id)] = Commodity(commodityGroup, id, name)
@@ -104,6 +105,7 @@ class FoodCropFactory:
     ##Création d'un indicateur prenant en argument un identifiant, une fréquence, une description de fréquence une localisation GPS, etc.
     ##On fait appel au dictionnaire Indicator. Si un id se trouve dans le dico, la méthode renvoie le Indicator en string
     def createIndicator(self, id, frequency, freqDesc, geogLocation, indicatorGroup, unit):
+        ## On enregistre l'identifiant dans le dictionnaire indicatorDico que si ce dernier n'est pas présent dans le dictionnaire
         if id in self.indicatorDico:
             return self.indicatorDico[str(id)]
         self.indicatorDico[str(id)] = Indicator(id, frequency, freqDesc, geogLocation, indicatorGroup, unit)

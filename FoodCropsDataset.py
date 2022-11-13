@@ -1,13 +1,7 @@
-import enum
-
 import pandas
-
-from Commodity import Commodity
 from CommodityGroup import CommodityGroup
 from FoodCropFactory import FoodCropFactory
 from IndicatorGroup import IndicatorGroup
-from Unit import Unit
-
 
 class FoodCropsDataset:
     ## On instancie dans le constructeur un tableau dans lequel on va stocker nos données et FoodCropFactory
