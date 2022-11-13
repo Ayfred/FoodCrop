@@ -35,6 +35,3 @@ Les différents dictionnaires ont été créés par Léo-Paul, ainsi que les mé
 L'ensemble des méthodes describe() et leurs imbriquements ont été réalisés par Yunus, qui a pris soin de commenter les méthodes de l'ensemble du projet et de rendre le code plus clair lorsque nécessaire, notemment en implémentant les conventions PEP de python.
 
 -----------------------------------------------------------------------------------------------------
-
-
-Créé et Développé par Ayfred & Yunus & Smilaid
