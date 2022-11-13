@@ -4,9 +4,9 @@ from FoodCropFactory import FoodCropFactory
 from IndicatorGroup import IndicatorGroup
 
 class FoodCropsDataset:
+
     ## On instancie dans le constructeur un tableau dans lequel on va stocker nos données et FoodCropFactory
     ## On crée des dictionnaires pour collecter les données d'indicatorGroup, commodityGroupDict, Unit et geographicalLocation
-
     def __init__(self):
         self.tableau = set()
         self.commodityGroupDict = {}
