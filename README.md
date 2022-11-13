@@ -1,4 +1,5 @@
 Projet python : FoodCrop, gestion de données à partir d'un tableau csv
+
 By Ayadar Yunus, Mu Maxime, Foray Léo-Paul
 
 Nous avons développé sur l'IDE Pycharm car nous l'utilisions déjà et son utilisation est intuitive. 
@@ -6,9 +7,11 @@ Le code était partagé en git via le gitlab de l'école, et nous avons utilisé
 
 Concernant l'utilisation de notre programme, il faut le faire tourner sur la classe Main.
 Celle ci contient par défaut les instructions :
+
     dataframe = pandas.read_csv("FeedGrains.csv")
     fcd = FoodCropsDataset()
     fcd.load("FeedGrains.csv")
+
 qui permettent de charger le jeux de données.
 
 Si vous souhaitez effectuer une recherche sur le résultat de ce chargement, il suffit de faire appel à la méthode findMeasurement() de FoodCropsDataset, dont le premier parametre est l'id du CommodityGroup, puis l'id de l'indicatorGroup, puis l'id de la position géographique et pour finir l'id de l'unité. Chacun de ces paramètre est optionnel, si aucun n'est présent la méthode renvoie toutes les mesures enregistrées.
