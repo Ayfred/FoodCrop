@@ -23,7 +23,7 @@ Si vous souhaitez que l'affichage soit plus lisible, ajoutez plutôt ceci :
     for measurement in result:
         print(measurement.describe())
 
-Concernant la répartition du rtavail dans le groupe, après une analyse poussée du sujet et du diagramme de classe qui l'illustrait, 
+Concernant la répartition du travail dans le groupe, après une analyse poussée du sujet et du diagramme de classe qui l'illustrait, 
 nous avons trouvé une manière de séparer les différentes tâches en trois groupes distincts pour tirer profit des compétences de chacun tout en préservant un équilibre entre les charges de travail. 
 Ainsi, Maxime s'est chargé de l'instanciation du modèle API et du bon fonctionnement de la méthode load. 
 Les différents dictionnaires ont été créés par Léo-Paul, ainsi que les méthodes permettant l'appel à ceux-ci pour la réutilisation d'instances ou encore pour la méthode find() de foodCropDataset. 
