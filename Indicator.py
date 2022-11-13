@@ -17,7 +17,7 @@ class Indicator(Describable):
         self.unit = unit
 
     def describe(self):
-        return "Indicator, id: " + str(self.id) + "is a " + str(self.indicatorGroup) + ", frequency id : " \
+        return "Indicator id : " + str(self.id) + " is a " + str(self.indicatorGroup) + ", frequency id : " \
                + str(self.frequency) + ", " + self.freqDesc + ", " + "\n" + self.unit.describe()
 
 
