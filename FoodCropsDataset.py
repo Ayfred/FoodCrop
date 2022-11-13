@@ -18,6 +18,7 @@ class FoodCropsDataset:
 
     ## La méthode load permet de charger depuis le fichier Excel les colonnes de données associées aux paramètres utilisés
     def load(self, datasetPath):
+        """ Permet de charger un jeu de donné"""
         dataframe = pandas.read_csv(datasetPath)
         for index, row in dataframe.iterrows():
 
@@ -37,12 +38,14 @@ class FoodCropsDataset:
 
     # Permet d'ajouter des mesures aux dictionnaires, en vérifiant si la liste associé à l'id existe déjà
     def addDict(self, key, value, dict):
+        """ Permet d'ajouter et éventuellement de créer des éléments dans le dictionnaire"""
         if key not in dict:
             dict[key] = set()
         dict[key].add(value)
 
     #Méthode find Measurements
     def findMeasurements(self, commodityGroupId = None, indicatorGroupId = None, geographicalLocationId = None, unitId = None):
+        """ Effectue les recherches sur les dictionnaires à partir d'arguments optionnels """
         result = {}
         if commodityGroupId is not None:
             result = self.commodityGroupDict[commodityGroupId]
@@ -71,6 +74,9 @@ class FoodCropsDataset:
         return self.tableau
 
     def findCommodityGroup(self, id):
+        """Retrouve le commodityGroup associé à une mesure, permet d'éviter le probleme
+        lorsque la case n'est pas remplie et d'appeler le type autre
+        """
         try:
             intId = int(id)
             return intId

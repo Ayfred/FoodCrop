@@ -14,15 +14,6 @@ class Measurement(Describable):
 
     ## Méthode describe, on entre les paramètres qu'on souhaite faire afficher
     def describe(self):
-        return ("Measurement id : " + str(self.id) + " made in " + str(self.year) +  " on  " + self.timePeriodDesc \
+        return ("Measurement id : " + str(self.id) + " made in " + str(self.year) + " on  " + self.timePeriodDesc \
                 + ", id timePeriod: " + str(self.timeperiodId) + "\n" + self.commodity.describe() + "\n"
                 + self.indicator.describe()) + "\n"
-
-    def getPeriod(self, id):
-        match id:
-            case 1:
-                return "monthly"
-            case 2:
-                return "quarterly"
-            case 3:
-                return "annually"

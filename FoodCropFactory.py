@@ -13,9 +13,10 @@ class FoodCropFactory:
         self.indicatorDico = {}
         self.unitDico = {}
 
-    ## Création de volume
     def createVolume(self, id):
-        ## On enregistre l'identifiant dans le dictionnaire unitDico que si ce dernier n'est pas présent dans le dictionnaire
+        """ On enregistre l'identifiant dans le dictionnaire unitDico
+         que si ce dernier n'est pas présent dans le dictionnaire
+        """
         if id in self.unitDico:
             return self.unitDico[str(id)]
         self.unitDico[str(id)] = Volume(id)
@@ -24,7 +25,9 @@ class FoodCropFactory:
 
     ## Création des prix
     def createPrice(self, id):
-        ## On enregistre l'identifiant dans le dictionnaire unitDico que si ce dernier n'est pas présent dans le dictionnaire
+        """ On enregistre l'identifiant dans le dictionnaire unitDico
+        que si ce dernier n'est pas présent dans le dictionnaire
+        """
         if id in self.unitDico:
             return self.unitDico[str(id)]
         self.unitDico[str(id)] = Price(id)
@@ -32,7 +35,9 @@ class FoodCropFactory:
 
     ## Création des poids
     def createWeight(self, id, weight):
-        ## On enregistre l'identifiant dans le dictionnaire unitDico que si ce dernier n'est pas présent dans le dictionnaire
+        """ On enregistre l'identifiant dans le dictionnaire unitDico
+        que si ce dernier n'est pas présent dans le dictionnaire
+        """
         if id in self.unitDico:
             return self.unitDico[str(id)]
         self.unitDico[str(id)] = Weight(id, weight)
@@ -40,7 +45,9 @@ class FoodCropFactory:
 
     ##Création de surfaces
     def createSurface(self, id):
-        ## On enregistre l'identifiant dans le dictionnaire unitDico que si ce dernier n'est pas présent dans le dictionnaire
+        """ On enregistre l'identifiant dans le dictionnaire unitDico
+        que si ce dernier n'est pas présent dans le dictionnaire
+        """
         if id in self.unitDico:
             return self.unitDico[str(id)]
         self.unitDico[str(id)] = Surface(id)
@@ -48,7 +55,9 @@ class FoodCropFactory:
 
     ##Création d'un paramètre de comptage
     def createCount(self, id, what):
-        ## On enregistre l'identifiant dans le dictionnaire unitDico que si ce dernier n'est pas présent dans le dictionnaire
+        """ On enregistre l'identifiant dans le dictionnaire unitDico
+        que si ce dernier n'est pas présent dans le dictionnaire
+        """
         if id in self.unitDico:
             return self.unitDico[str(id)]
         self.unitDico[str(id)] = Count(id, what)
@@ -96,7 +105,9 @@ class FoodCropFactory:
 
     ## On va collecter les produits grâce à leurs identifiants : si les id sont dans le dictionnaire alors on retourne la donnée en String
     def createCommodity(self,commodityGroup,  id, name):
-        ## On enregistre l'identifiant dans le dictionnaire commodityDico que si ce dernier n'est pas présent dans le dictionnaire
+        """ On enregistre l'identifiant dans le dictionnaire commodityDico
+        que si ce dernier n'est pas présent dans le dictionnaire
+        """
         if id in self.commodityDico:
             return self.commodityDico[str(id)]
         self.commodityDico[str(id)] = Commodity(commodityGroup, id, name)
@@ -105,7 +116,9 @@ class FoodCropFactory:
     ##Création d'un indicateur prenant en argument un identifiant, une fréquence, une description de fréquence une localisation GPS, etc.
     ##On fait appel au dictionnaire Indicator. Si un id se trouve dans le dico, la méthode renvoie le Indicator en string
     def createIndicator(self, id, frequency, freqDesc, geogLocation, indicatorGroup, unit):
-        ## On enregistre l'identifiant dans le dictionnaire indicatorDico que si ce dernier n'est pas présent dans le dictionnaire
+        """ On enregistre l'identifiant dans le dictionnaire IndicatoDico
+        que si ce dernier n'est pas présent dans le dictionnaire
+        """
         if id in self.indicatorDico:
             return self.indicatorDico[str(id)]
         self.indicatorDico[str(id)] = Indicator(id, frequency, freqDesc, geogLocation, indicatorGroup, unit)
@@ -117,6 +130,9 @@ class FoodCropFactory:
         return Measurement(id, year, value, timeperiodId, timeperiodDesc, commodity, indicator)
 
     def createUnit(self, id, name):
+        """ createUnit permet de trouver a partir de l'id de l'unité associé à
+        une mesure quel constructeur de sous classe il fautdra appeler
+        """
         if id in self.unitDico:
             return self.indicatorDico[str(id)]
         # match ne marche que pour Python 3.10 ou ultérieure
@@ -136,6 +152,7 @@ class FoodCropFactory:
                 return self.createCount(id, name)
 
     def getMultiplier(self, id):
+        """ Permet de trouver le multiplier associé à un poids"""
         match id:
             case 7:
                 return 1000000.
