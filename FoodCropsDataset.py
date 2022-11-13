@@ -10,8 +10,8 @@ from Unit import Unit
 
 
 class FoodCropsDataset:
-## On instancie dans le constructeur un tableau dans lequel on va stocker nos données
-## On crée des ensembles pour collecter les données d'IndicatorGroup, commodityGroup, Unit, commodityType
+    ## On instancie dans le constructeur un tableau dans lequel on va stocker nos données et FoodCropFactory
+    ## On crée des dictionnaires pour collecter les données d'indicatorGroup, commodityGroupDict, Unit et geographicalLocation
 
     def __init__(self):
         self.tableau = set()
@@ -22,7 +22,7 @@ class FoodCropsDataset:
         self.fcf = FoodCropFactory()
 
 
-## La méthode load permet de charger depuis le fichier Excel les colonnes de données associées aux paramètres utilisés
+    ## La méthode load permet de charger depuis le fichier Excel les colonnes de données associées aux paramètres utilisés
     def load(self, datasetPath):
         dataframe = pandas.read_csv(datasetPath)
         for index, row in dataframe.iterrows():
@@ -33,6 +33,7 @@ class FoodCropsDataset:
             measurement = self.fcf.createMeasurement(index, int(row[13]), float(row[18]), int(row[16]), row[17], commodity, indicator)
             self.tableau.add(measurement)
 
+            ## On remplit les dictionnaires
             self.addDict(indicator.id, measurement, self.indicatorGroup)
             self.addDict(self.findCommodityGroup(row[2]), measurement, self.commodityGroupDict)#ok
             self.addDict(unit.id, measurement, self.unitGroup)#ok
@@ -40,12 +41,13 @@ class FoodCropsDataset:
 
 
 
-# Permet d'ajouter des mesures aux dictionnaires, en vérifiant si la liste associé à l'id existe déjà
+    # Permet d'ajouter des mesures aux dictionnaires, en vérifiant si la liste associé à l'id existe déjà
     def addDict(self, key, value, dict):
         if key not in dict:
             dict[key] = set()
         dict[key].add(value)
 
+    #Méthode find Measurements
     def findMeasurements(self, commodityGroupId = None, indicatorGroupId = None, geographicalLocationId = None, unitId = None):
         result = {}
         if commodityGroupId is not None:
